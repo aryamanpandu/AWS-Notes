@@ -809,14 +809,84 @@ AWS provides some services that can be used against DDos protection.
 	- Protocol flooding
 	- Request flooding (login request flooding, API request flooding)
 
-![[Pasted image 20250429215647.png| center | 600]]
+![[EncryptionAtRestandInTransit.png| center | 600]]
 <p style="text-align:center">Encryption of Data at Rest and Data at Transit</p>
 #### AWS Key Management Service (KMS)
 - Manages Encryption keys for us.
 - If you hear "encryption" on the test, it is most likely KMS.
 
 **Types of KMS Keys**
-- Customer Managed Key: 
-- AWS Managed Key: 
-- AWS Owned Key:
-- CloudHSM Keys:
+- Customer Managed Key
+	- Create, manage, and used by the customer, can enable or disable. 
+	- Possibility of key rotation policy
+	- Possibility to bring your own key
+- AWS Managed Key
+	- Created, managed and used on the customer's behalf by AWS.
+	- Used by AWS services (aws/s3, aws/ebs, aws/redshift).
+- AWS Owned Key
+	- Collection of CMKs that an AWS service owns and manages to use in multiple accounts. 
+	- AWS uses these to protect resources in your account but you cannot view the keys.
+- CloudHSM Keys
+	- Keys generated from your own CloudHSM hardware device. 
+	- CloudHSM is just a dedicated encryption hardware, to manage your own keys.
+#### AWS Certificate Manager (ACM)
+- Lets you provision, manage, and deploy public/private SSL/TLS certificates. Basically used for HTTPS.
+- Automatically renews TLS certificates.
+- Integrations with other AWS services (Elastic Load Balancers, CloudFront Distributions, APIs on API Gateway).
+#### AWS Secrets Manager
+- Service for storing passwords/secrets.
+- Ability to force rotation of secrets every X days. 
+- Can automate generation of secrets on rotation.
+- Integration with Amazon RDS.
+#### AWS Artifact
+- Not a service, mainly used for internal audit or compliance.
+- A portal to provide customers with on-demand access to **AWS compliance documentation** and **AWS agreements**.
+- **Artifact Reports**: Allows you to download AWS security and compliance documents from third-party auditors.
+- **Artifact Agreements**: Allows you to review, accept and track the status of AWS agreements.
+#### Amazon GuardDuty
+- Service that uses machine learning algorithms to protect your AWS account. One click to enable (30 days trial).
+- Input data includes
+	- CloudTrail Event Logs - unusual API calls, unauthorized deployments
+		- CloudTrail Management Events 
+		- CloudTrail S3 Data Events
+	- VPC Flow Logs - unusual internal traffic, unusual IP address
+	- DNS Logs - compromised EC2 instances sending encoded data within DNS queries.
+	- Optional Features - EKS Audit Los, RDS & Aurora, EBS, Lambda, S3, Data Events.
+- Can setup EventBridge rules to be notified incase of findings.
+#### Amazon Inspector
+- Automated Security Assessments. **Only for EC2 instances, Container Images and Lambda functions**.
+- Reporting and integration with AWS Security Hub.
+- **For EC2 instances**
+	- Analyze against unintended network accessibility through open ports.
+	- Uses the AWS Systems Manager.
+	- Analyze the running OS against known vulnerabilities.
+- **For Container Images push to Amazon ECR**
+	- Assessment of Container Images as they are pushed
+- **For Lambda Functions**
+	- Identifies software vulnerabilities in function code and package dependencies.
+	- Assessment of functions as they are deployed.
+#### AWS Config
+- Helps with **auditing and recording compliance** of your AWS resources. Per region service.
+- Helps record configurations and changes over time.
+- Can store the configuration data into S3.
+- You can receive SNS notifications for any changes. 
+#### AWS Macie
+- Fully managed data security and data privacy service that uses **machine learning and pattern matching**.
+- For discovering and protecting sensitive data in AWS. (like personally identifiable information \[PII])
+![[Pasted image 20250511121015.png | 600 | center]]
+<p style="text-align:center">Diagram of Macie with S3 and EventBridge</p>
+#### AWS Security Hub
+- **Central security tool** to manage security **across AWS accounts** and **automate security checks**.
+- Must enable AWS Config service to use this service.
+- Automatically aggregates alerts from various AWS services and AWS partner tools.
+- Integrated dashboards showing current security and compliance status to quickly take action.
+![[Pasted image 20250511121410.png| 600 | center]]
+<p style="text-align:center">Diagram of Security Hub Usage</p>
+#### Amazon Detective
+- GuardDuty, Macie, Security Hub -> identify potential security issues or findings.
+- Amazon Detective -> identify root cause of security issues or suspicious activities.
+- This service analyzes, investigates, and quickly identifies the **root cause of security issues** or suspicious activites.
+- Uses Machine Learning and Graphs.
+- Produces visualizations with details and context to get to the root cause.
+- Automatically collects and processes events from VPC Flow Logs, CLoudTrail, GuardDuty and creates a unified view.
+#### AWS Abuse

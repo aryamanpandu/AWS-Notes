@@ -425,7 +425,6 @@ ___
 	- Edge computing is processing data while it is being created in an edge location (limited internet and no access to computing power).
 	- Use cases: preprocess data, machine learning.
 
----
 ### AWS Storage Gateway
 - Bridge between on-premise data and cloud data in S3.
 - Use cases: disaster recovery, backup and restore.
@@ -506,6 +505,7 @@ ___
 - Migrate databases to AWS, resilient, self healing.
 - Source database remains available during migration.
 
+---
 ### Other Compute Section
 #### Docker
 - Software development platform to deploy applications
@@ -885,8 +885,106 @@ AWS provides some services that can be used against DDos protection.
 #### Amazon Detective
 - GuardDuty, Macie, Security Hub -> identify potential security issues or findings.
 - Amazon Detective -> identify root cause of security issues or suspicious activities.
-- This service analyzes, investigates, and quickly identifies the **root cause of security issues** or suspicious activites.
+- This service analyzes, investigates, and quickly identifies the **root cause of security issues** or suspicious activities.
 - Uses Machine Learning and Graphs.
 - Produces visualizations with details and context to get to the root cause.
 - Automatically collects and processes events from VPC Flow Logs, CLoudTrail, GuardDuty and creates a unified view.
 #### AWS Abuse
+- Report suspected AWS resources used for abusive or illegal purposes.
+- Abusive and Prohibited behaviours are
+	- **Spam** - receiving undesired emails from AWS-owned IP address, websites and forums spammed by AWS resources.
+	- **Port Scanning** - sending packets to your ports to discover the unsecured ones.
+	- **DoS or DDoS attacks** - AWS-owned IP addresses attempting to overwhelm or crash your servers/softwares.
+	- **Intrusion attempts** - logging in on your resources
+	- **Hosting objectionable or copyrighted content** - distributing illegal or copyrighted content without consent.
+	- **Distributing malware** - AWS resources distributing softwares to harm computers or machines.
+#### Root user privileges
+- Not a service.
+- Root user = Account Owner.
+- Has complete access to all AWS services and resources.
+- Not to be used for everyday, administrative tasks.
+- Actions performed only by the **root user**:
+	- Change account settings (account name, email address, root user password)
+	- View certain tax invoices
+	-  Close your AWS account
+	- Restore IAM user permissions
+	- Change or Cancel AWS support plan
+	- Configure an Amazon S3 bucket to enable MFA.
+#### IAM Access Analyzer
+- Find out which resources are shared externally
+- Helps define **zone of trust** i.e. what resources are being used by AWS Account or AWS organization and what resources are being used by outside of the AWS accounts.
+
+![[Pasted image 20250511134324.png| 600 | center]]
+<p style="text-align:center">Zone of Trust Diagram</p>
+### Machine Learning Section
+#### Amazon Rekognition
+- Find objects, people, text, scenes in **images** and videos using ML.
+- Facial analysis and facial search to do user verification, people counting.
+#### Amazon Transcribe
+- Automatically convert **speech to text**
+- Uses deep learning process called automatic speech recognition (ASR) to convert speech to text quickly and accurately.
+- Use cases
+	- Transcribe customer service calls.
+	- Automate closed captioning and subtitling.
+#### Amazon Polly
+- Turn text into lifelike speech using deep learning.
+- Allowing you to create applications that talk.
+#### Amazon Translate
+- Natural and accurate **language translation**
+#### Amazon Lex and Connect
+- **Amazon Lex** (Alexa)
+	- Automatic Speech Recognition (ASR) to convert speech to text
+	- Natural language understanding to recognize the intent of text, callers
+	- Helps build chatbots, call centre bots.
+- **Amazon Connect**
+	- Receive calls, create contact flows, cloud-based **virtual contact centre**.
+	- Can integrate with other Customer Relation Management systems or AWS.
+#### Amazon Comprehend
+- For Natural Language Processing
+- Fully managed and serverless.
+- Uses Machine Learning to find insights and relationships in text.
+- Sample use case: analyze customer interactions (emails) to find what leads to a positive or negative experience.
+#### Amazon SageMaker
+- Fully managed service for developers/data scientists to build ML models.
+#### Amazon Kendra
+- Fully managed **document search service** powered by Machine Learning.
+- Extract answers from within a document.
+#### Amazon Personalize
+- Fully managed ML-service to build apps with real-time personalized recommendations.
+- Example: personalized product recommendations/re-ranking, customized direct marketing.
+- Also used by amazon.com
+- Implement in days, not months (you don't need to build, train, and deploy ML solutions)
+#### Amazon Textract
+- Automatically extracts text, handwriting, and data from any scanned documents using AI and ML.
+- Extract data from forms and tables.
+- Read and process any type of document (PDFs, images)
+- Example: Financial services (invoices, financial reports etc.)
+### Account Management, Billing, and Support Section
+#### AWS Organizations
+- Global service that allows you to manage **multiple AWS accounts**.
+- Main account is the master account.
+- **Cost benefits**
+	- **Consolidated billing** across all accounts - single payment method
+	- Pricing benefits from **aggregated usage** (volume discount for EC2, S3, etc.)
+	- Pooling of Reserved EC2 instances for optimal savings.
+- Restrict account privileges using **Service Control Policies (SCP)**.
+- Can also use API to automate AWS account creation.
+
+A good multi account strategy to follow is to create accounts per department, per cost centre, per dev/test/production based on **regulatory restrictions** (SCP) for better resource isolation.
+
+![[Pasted image 20250511140912.png | 600 | center]]
+<p style="text-align:center">Example of AWS Organization with Organizational Units (OU)</p>
+
+##### Service Control Policies (SCP)
+- Whitelist or blacklist IAM actions.
+- Applied at the **Organization Unit** or **Account** level.
+- Does not apply to the master account.
+	- If you attach an SCP that denies `s3:DeleteBucket` to an OU, all member accounts in that OU **cannot delete S3 buckets**. But the **management account can still delete S3 buckets**, regardless of the SCP.
+- SCP is applied to all the **Users and Roles** of the Account, including Root user.
+- SCP does not affect service-linked roles
+	- **service-linked roles** are the roles which are created to be used by AWS services. For example, Amazon ECS uses a role to register and deregister container instances.
+- SCP must have an explicit allow (does not allow anything by default).
+- Example: restrict access to certain services.
+![[Pasted image 20250511141803.png | center | 600]]
+<p style="text-align:center">Example of a IAM policy that if applied to an OU will be called an SCP</p>
+

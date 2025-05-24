@@ -190,6 +190,7 @@ ___
 | **Commitment**  | Instance type, size, AZ/region | Amount spending per hour across services |
 | **Flexibility** | Less Flexible                  | More Flexible                            |
 | **Scope**       | Regional or AZ                 | Flexible across EC2, Lambda, and Fargate |
+
 ##### EC2 Spot Instances
 - **Most cost-efficient** instances in AWS.
 - Instances that you can **lose** at any point if your max price is less than the current spot price.
@@ -221,6 +222,7 @@ ___
 | Isolation on physical hosts              | OS patches and updates                         |
 | Replacing faulty hardware                | Software installed on EC2                      |
 | Compliance Validation                    | IAM Access Management and Data security on EC2 |
+
 #### EC2 Instance Storage
 ##### Elastic Block Store (EBS) Volume
 - Network drive (not a physical drive, so has latency) attached to instances.
@@ -269,6 +271,7 @@ ___
 | Responsible for replication of Data for EBS and EFS drives (**Not** EBS and EFS drives themselves) | Setting up data encryption                                                                                      |
 | Replacing faulty Hardware                                                                          | Responsible for any data on the drives                                                                          |
 | Ensuring that AWS employees cannot access your data                                                | Understanding the risk of using [[Amazon Web Services (AWS) CCP Notes#EC2 Instance Store\| EC2 Instance Store]] |
+
 #### Important ports to know
 
 | Ports                                | **Port Number** |

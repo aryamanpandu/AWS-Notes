@@ -190,7 +190,6 @@ ___
 | **Commitment**  | Instance type, size, AZ/region | Amount spending per hour across services |
 | **Flexibility** | Less Flexible                  | More Flexible                            |
 | **Scope**       | Regional or AZ                 | Flexible across EC2, Lambda, and Fargate |
-
 ##### EC2 Spot Instances
 - **Most cost-efficient** instances in AWS.
 - Instances that you can **lose** at any point if your max price is less than the current spot price.
@@ -222,7 +221,6 @@ ___
 | Isolation on physical hosts              | OS patches and updates                         |
 | Replacing faulty hardware                | Software installed on EC2                      |
 | Compliance Validation                    | IAM Access Management and Data security on EC2 |
-
 #### EC2 Instance Storage
 ##### Elastic Block Store (EBS) Volume
 - Network drive (not a physical drive, so has latency) attached to instances.
@@ -271,7 +269,6 @@ ___
 | Responsible for replication of Data for EBS and EFS drives (**Not** EBS and EFS drives themselves) | Setting up data encryption                                                                                      |
 | Replacing faulty Hardware                                                                          | Responsible for any data on the drives                                                                          |
 | Ensuring that AWS employees cannot access your data                                                | Understanding the risk of using [[Amazon Web Services (AWS) CCP Notes#EC2 Instance Store\| EC2 Instance Store]] |
-
 #### Important ports to know
 
 | Ports                                | **Port Number** |
@@ -1212,13 +1209,13 @@ AWS consists of 5 support plans.
 	- IAM Roles for Amazon EC2: provide temporary credentials for EC2 instances to access AWS resources.
 	- Identity federation: manage user identities in external systems, and provide them with STS tokens to access AWS resources.
 
-![[Pasted image 20250524125027.png | center | 600]]
+![[STSAWSExample.png| center | 600]]
 <p style="text-align: center">Diagram of STS Service Workings</p>
 #### Amazon Cognito (Simplified)
 - Identity for your Web and Mobile application users. 
 - Instead of creating them an IAM user, you create a user in Cognito.
 
-![[Pasted image 20250524125248.png | center | 600]]
+![[AmazonCognitoExample.png| center | 600]]
 <p style="text-align: center">Diagram of Amazon Cognito</p>
 #### What is Microsoft Active Directory (AD)
 - A directory service for Windows domain networks, acting as a centralized database and set of services. 
@@ -1372,3 +1369,277 @@ AWS consists of 5 support plans.
 	- In SNS & SES, you managed each message's audience, content and delivery schedule.
 	- In Pinpoint, you create message templates, deliver schedules, highly-targeted segments, and full campaigns.
 ### AWS Architecting & Ecosystem Section
+
+#### Well Architected Framework
+
+It is a set of best practices and guidelines developed by Amazon Web Services to help you build secure, high-performing, resilient, and scalable infrastructure for your applications in the cloud.
+
+There are 6 pillars
+1. Operational Excellence
+2. Security
+3. Reliability
+4. Performance Efficiency
+5. Cost Optimization
+6. Sustainability
+##### Operational Excellence
+
+This includes the ability to run and monitor systems to deliver business value and to continually improve supporting processes and procedures. 
+
+Design Principles
+- Perform operations as code - Infrastructure as code (Write code to define and automate the setup of your infrastructure).
+- Make frequent, small, reversible changes so in case of failure, you can revert it.
+- Refine operations procedures frequently.
+- Anticipate failure.
+- Use managed services to reduce operational burden
+- Continuously monitor and analyze your system's behaviour (logs, metrics etc.) to quickly detect issues, make informed improvements to your system.
+
+AWS Services
+To Prepare
+- AWS CloudFormation
+- AWS Config
+To Operate
+- AWS CloudFormation
+- AWS Config
+- AWS CloudTrail
+- Amazon CloudWatch
+- AWS X-Ray
+To Evolve
+- AWS CloudFormation
+- AWS CodeBuild
+- AWS CodeCommit
+- AWS CodeDeploy
+- AWS CodePipeline
+##### Security
+
+This includes the ability to protect information, systems, and assets while providing business value through risk assessments and mitigation strategies.
+
+Design Principles
+- Implement a strong identity foundation by using principle of least privilege with Identity Access Management (IAM).
+- Enable traceability - Integrate logs and metrics with systems so that the systems can automatically respond and take action without human intervention.
+- Apply security on all layers like edge networks, VPC, subnet, load balance, every instance, Operating System, and application.
+- Automate security best practices.
+- Protect data in transit and at rest through encryption, access control etc.
+- Keep people away from data as much as possible. 
+- Prepare for security events by running incident response simulations and use tools with automation to increase your speed for detection, investigation, and recovery.
+
+AWS Services
+For Identity and Access Management
+- IAM
+- AWS Security Token Service (STS)
+- Multi-Factor Authentication Token
+- AWS Organizations
+Detective Controls
+- AWS Config
+- AWS CloudTrail
+- Amazon CloudWatch
+Infrastructure Protection
+- Amazon CloudFront
+- Amazon VPC
+- AWS Shield
+- AWS Web Application Firewall (WAF)
+- Amazon Inspector
+Data Protection
+- Key Management Service
+- Amazon S3
+- Elastic Load Balancing (ELB)
+- Amazon Elastic Block Storage (EBS)
+- Amazon Relational Database Service (RDS)
+Incident Response
+- IAM
+- AWS CloudFormation
+- Amazon CloudWatch Events
+##### Reliability
+
+It is the ability of a system to recover from infrastructure or service disruptions, dynamically acquire computing resources to meet demand, and mitigate disruptions such as misconfigurations or transient network issues.
+
+Design Principles
+- Test recovery procedures by using automation to simulate different failures or to recreate scenarios that led to failures before.
+- Automatically recover from failure by designing for fault tolerance like Multi-AZ and multi-region deployments.
+- Scale horizontally by distributing requests across multiple, smaller resources to ensure that they don't share a common point of failure.
+- Use auto scaling to satisfy demand without over or under provisioning
+- Use automation to make changes to infrastructure
+
+AWS Services
+
+For Foundation
+- IAM
+- Amazon VPC
+- Service Quotas
+- AWS Trusted Advisor
+
+For Change Management
+- AWS Auto Scaling
+- Amazon CloudWatch
+- AWS CloudTrail
+- AWS Config
+
+Failure Management
+- Backups
+- AWS CloudFormation
+- Amazon S3
+- Amazon Route 53
+##### Performance Efficiency
+
+This includes the ability to use computing resources efficiently to meet system requirements, and to maintain that efficiency as demand changes and technologies evolve. 
+
+Design Principles
+- Use services provided for advanced technologies so that your focus can be more on product development.
+- Use serverless architecture to avoid burden of managing servers.
+- Be aware of AWS services to ensure that you are using resources efficiently.
+
+AWS Services
+
+For Selection
+- AWS AutoScaling
+- AWS Lambda
+- Amazon Elastic Block Store (EBS)
+- Amazon Simple Storage Service (S3)
+- Amazon RDS
+
+For Review
+- AWS CloudFormation
+
+For Monitoring
+- Amazon CloudWatch
+- AWS Lambda
+##### Cost Optimization 
+
+Includes the ability to run systems to deliver business value at the lowest price point. 
+
+Design Principles
+- Pay only for what you use. Do not pay for extra services
+- Measure overall efficiency with CloudWatch
+- Don't spend money on data centre operations by letting AWS handle the infrastructure.
+- Accurate identification of system usage and costs, helps measure return on investment (ROI).
+- Use managed services and applications to reduce the cost of ownership.
+
+AWS Services
+
+Expenditure Awareness
+- AWS Budgets
+- AWS Cost and Usage Report
+- AWS Cost Explorer
+- Reserved Instance Reporting
+
+Cost-Effective Resources
+- Spot Instance
+- Reserved Instance
+- Amazon S3 Glacier
+
+Matching Supply and Demand
+- AWS Auto Scaling
+- AWS Lambda
+
+Optimizing Over Time
+- AWS Trusted Advisor
+- AWS Cost and Usage Report 
+##### Sustainability
+
+This focuses on minimizing the environmental impacts of running cloud workloads.
+
+Design Principles
+- Understand your impact through performance indicators
+- Establish sustainability goals for workloads.
+- Maximize utilization to maximize the energy efficiency of the underlying hardware and minimize idle resources.
+
+AWS Services
+
+There are a ton of services that can be used to reduce environmental impacts through efficient use.
+- EC2 Auto Scaling, Serverless services like Lambda, Fargate.
+#### AWS Well-Architected Tool
+
+Free tool that helps review your architecture against the 6 pillars well-architected framework and adopt architectural best practices.
+#### AWS Customer Carbon Footprint Tool
+
+- Track, measure, review, and forecast the Carbon emissions generated from your AWS usage.
+- Helps you meet your own sustainability goals.
+### AWS Cloud Adoption Framework (AWS CAF)
+
+This helps you build and execute a comprehensive plan for your digital transformation through innovative use of AWS.
+#### Difference between CAF and Well-Architected Framework
+
+| Cloud Adoption Framework                                                                                  | Well Architected Framework                                                                              |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| Helps organizations plan and manage their cloud transformation journey.                                   | Helps you build cloud applications that are secure, reliable, and efficient.                            |
+| This is more focused on strategy when an organization is starting or scaling their move out to the cloud. | This is focused on the technical expertise required to build cloud applications.                        |
+| Gives us a high-level roadmap for cloud adoption across departments, leadership, and teams.               | Gives us a hands-on technical guide to design and review your architecture according to best practices. |
+
+AWS CAF has six perspectives
+- Business
+- People
+- Governance
+- Platform
+- Security
+- Operations
+
+![[AWSCAFDiagram.png| center | 600]]
+<p style="text-align:center"> AWS CAF Diagram </p>
+
+Business Perspective helps ensure that your cloud investments accelerate your digital transformation ambitions and business outcomes.
+
+People Perspective serves as a bridge between technology and business, accelerating the cloud journey to help organizations more rapidly evolve to a culture of continuous growth, learning, and where change becomes business-as-normal, with focus on culture, organizational structure, leadership, and workforce.
+
+Governance Perspective helps you orchestrate your cloud initiatives while maximizing organizational benefits and minimizing transformation-related risks.
+
+Platform Perspective helps you build an enterprise-grade, scalable, hybrid cloud platform, modernize existing workloads and implement new cloud-native solutions.
+
+Security Perspective helps you achieve the confidentiality, integrity, and availability of your data and cloud workloads.
+
+Operations Perspective helps ensure that your cloud services are delivered at a level that meets the needs of your business.
+
+#### Transformation Domains
+
+Technology - This involved using the cloud to migrate and modernize legacy infrastructure, applications, data and analytics platforms.
+
+Process - This involves modernization of how your business operates by digitizing, automating, and optimizing processes using AWS services.
+
+Organization - Reimagining your operating model. This involves organizing your teams around products and value streams and leveraging agile methods to rapidly iterate and evolve.
+
+Product - This involves reimagining what your business offers by creating new products, services or revenue streams by leveraging power of the cloud.
+
+Envision - This is the starting point. You work with business and technical stakeholders to understand goals and identify where the cloud can create business value.
+
+Align - After you know what you want to do, you assess how ready the organization is across the 6 AWS CAF perspectives.
+
+Launch - You begin executing your vision in a controlled way by delivering small-scale, high-impact cloud projects.
+
+Scale - After successful small-scale cloud projects, you broaden adoption across the organization.
+
+#### AWS Right Sizing
+
+EC2 has many instances types but choosing the most powerful instance type isn't the best choice because of the cloud being elastic. 
+
+Right sizing is the process of matching instance types and sizes to your workload performance and capacity requirements at the lowest possible cost. It also includes looking at deployed instances and identifying opportunities to eliminate or downsize without compromising capacity or other requirements.
+
+It is important to right size
+- Before a cloud migration
+- Continuously after the cloud onboarding process as requirements change over time.
+
+#### AWS Marketplace
+
+This consists of a digital catalog with thousands of software listings independent software vendors. You can find stuff like custom AMI, CloudFormation templates, Software as a Service, Containers.
+
+#### AWS Professional Services & Partner Network
+
+The AWS Professional Services organization is a global team of experts. They work alongside your team and a chosen member of the AWS Partner Network (APN), this is a network of companies that work with AWS. 
+
+- APN Technology Partners: the companies within APN that specialize in providing hardware, connectivity, or software solutions.
+- APN Consulting Partners: companies within APN that provide professional services to help build on AWs.
+- APN Training Partners: companies authorized by AWS that deliver official AWS training courses.
+- AWS Competency Program: AWS Competencies are granted to APN Partner companies who have demonstrated technical proficiency and proven customer success in specialized solution areas.
+- AWS Navigate Program: helps APN Partners become better Partners.
+#### AWS IQ
+
+This is a service that connects AWS customers with AWS Certified experts for on-demand, hands-on assistance with AWS projects. Allows customers and experts to engage in project work. Allows video-conferencing, contract management, secure collaboration, integrated billing.
+#### AWS re:Post
+
+This is an AWS-managed Q&A service offering crowd-sources expert-reviewed answers to your technical questions about AWS. This is like the stack overflow of AWS.
+
+- Part of the AWS Free tier.
+- Questions from AWS Premium Support customers that do not receive a response from the community are passed on to AWS Support engineers.
+#### AWS Managed Service (AMS)
+
+This is a service that helps enterprises operate their AWS infrastructure more efficiently and securely by providing ongoing management, monitoring, and automation of core operational tasks.
+
+- AMS offers a team of AWS experts who manage and operate your infrastructure for security, reliability, and availability.
+- Fully managed service that implements best practices.

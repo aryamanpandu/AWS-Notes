@@ -256,19 +256,21 @@ ___
 - Free service, only pay for underlying resources.
 
 ![[EC2ImageBuilderService.png| center |600]]
-<p style="text-align:center">Diagram of EC2 Image Builder Service</p>
+![EC2 Image Builder](AWS Notes Screenshots/EC2ImageBuilderService.png)
+Diagram of EC2 Image Builder Service
 
 ##### Amazon FSX
 - 3rd Party High-performance file systems on AWS
 - Fully managed service
 - **FSx for Windows File Server** or **for Lustre**
 
-| **AWS**                                                                                            | **Customer**                                                                                                    |
-| -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Infrastructure                                                                                     | Setting up backup/snapshot procedures                                                                           |
-| Responsible for replication of Data for EBS and EFS drives (**Not** EBS and EFS drives themselves) | Setting up data encryption                                                                                      |
-| Replacing faulty Hardware                                                                          | Responsible for any data on the drives                                                                          |
-| Ensuring that AWS employees cannot access your data                                                | Understanding the risk of using [[Amazon Web Services (AWS) CCP Notes#EC2 Instance Store\| EC2 Instance Store]] |
+| **AWS**                                                                                         | **Customer**                                                                                                  |
+|--------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| Infrastructure                                                                                   | Setting up backup/snapshot procedures                                                                          |
+| Responsible for replication of data for EBS and EFS drives (**not** the EBS and EFS drives themselves) | Setting up data encryption                                                                                     |
+| Replacing faulty hardware                                                                        | Responsible for any data on the drives                                                                         |
+| Ensuring that AWS employees cannot access your data                                               | Understanding the risk of using EC2 Instance Store                                     |
+
 #### Important ports to know
 
 | Ports                                | **Port Number** |

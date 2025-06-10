@@ -6,7 +6,7 @@ These notes are based on [Stephane Maarek's Udemy course on AWS Cloud Practition
 
 ## What's Inside
 
-- **Notes.md**: Concise, organized, and exam-focused notes covering core AWS services, billing and pricing, support plans, security and compliance, cloud architecture principles, and more.
+- **Amazon Web Services (AWS) CCP Notes.md**: Concise, organized, and exam-focused notes covering core AWS services, billing and pricing, support plans, security and compliance, cloud architecture principles, and more.
 - **AWS Notes Screenshots/**: A folder containing helpful visual references and diagrams related to the notes. These images reinforce key concepts and assist visual learners.
 
 ## Who This Is For

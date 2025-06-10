@@ -256,7 +256,7 @@ ___
 - Free service, only pay for underlying resources.
 
 ![[EC2ImageBuilderService.png| center |600]]
-![EC2 Image Builder](AWS Notes Screenshots/EC2ImageBuilderService.png)
+![EC2 Image Builder](./AWS%20Notes%20Screenshots/EC2ImageBuilderService.png)
 Diagram of EC2 Image Builder Service
 
 ##### Amazon FSX

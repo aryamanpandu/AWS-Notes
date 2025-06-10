@@ -43,7 +43,7 @@
 
 - AWS has both **Global services** (Route 53, IAM, Cloudfront) as well as **Regional Services** (Amazon EC2, Elastic Beanstalk, Lambda)
 
-[Shared Responsibility Model](./AWS%20Notes%20Screenshots/SharedResponsibilityModel.png)
+![Shared Responsibility Model](./AWS%20Notes%20Screenshots/SharedResponsibilityModel.png)
 Shared Responsibility Model Diagram
 
 - **Customer**: Security IN the cloud.
@@ -332,7 +332,7 @@ Diagram of EC2 Image Builder Service
 	- **Gateway Load Balancer** - Layer 3
 	- **Classic Load Balancer** - Layer 4 and 7
 	
-[Elastic Load Balancer Diagram](./AWS%20Notes%20Screenshots/ElasticLoadBalancerDiagram.png)
+![Elastic Load Balancer Diagram](./AWS%20Notes%20Screenshots/ElasticLoadBalancerDiagram.png)
 Load Balancer
 
 #### Auto Scaling Group (ASG)
@@ -352,7 +352,7 @@ Load Balancer
 	- **Scheduled Scaling** anticipate scaling based on usage patterns
 	- **Predictive Scaling**: Uses Machine Learning to predict future traffic ahead of time.
 
-[Auto Scaling Group with Load Balancer Diagram](./AWS%20Notes%20Screenshots/ElasticLoadBalancerDiagram.png)
+![Auto Scaling Group with Load Balancer Diagram](./AWS%20Notes%20Screenshots/ElasticLoadBalancerDiagram.png)
 ASG with Load Balancer Diagram
 
 ___
@@ -477,7 +477,7 @@ ___
 - Read Replicas for improved read performance
 - **Cannot** SSH into instances
 
-[ASG with Amazon RDS](./AWS%20Notes%20Screenshots/ASGwithAmazonRDS.png)
+![ASG with Amazon RDS](./AWS%20Notes%20Screenshots/ASGwithAmazonRDS.png)
 Usage of Amazon RDS with ELB and EC2 Instances
 
 #### Amazon Aurora
@@ -503,7 +503,7 @@ Usage of Amazon RDS with ELB and EC2 Instances
 - AWS takes care of OS maintenance/patching, optimizations, setup, config.
 
 
-[Elasti Cache Architecture Example](./AWS%20Notes%20Screenshots/ElastiCacheArchitectureExample.png)
+![Elasti Cache Architecture Example](./AWS%20Notes%20Screenshots/ElastiCacheArchitectureExample.png)
 ElastiCache Architecture
 
 #### DynamoDB
@@ -661,7 +661,7 @@ ElastiCache Architecture
 - Serverless.
 
 
-[Example of Code Pipline Usage](./AWS%20Notes%20Screenshots/ExampleOfCodePipelineUsage.png)
+![Example of Code Pipline Usage](./AWS%20Notes%20Screenshots/ExampleOfCodePipelineUsage.png)
 CodePipeline Usage
 
 #### AWS CodeArtifact
@@ -769,7 +769,7 @@ CodePipeline Usage
 - Understand dependencies in a microservice architecture.
 
 
-[Example of XRay AWS](./AWS%20Notes%20Screenshots/ExampleOfXRayAWS.png)
+![Example of XRay AWS](./AWS%20Notes%20Screenshots/ExampleOfXRayAWS.png)
 Example of AWS X-Ray
 
 #### Amazon CodeGuru
@@ -813,7 +813,7 @@ Some extra stuff in VPCs:
 	- These also help with reducing the number of IP addresses used in total as there are not enough IP addresses available in IPv4.
 
 
-[VPC Diagram](./AWS%20Notes%20Screenshots/VPCDiagram.png)
+![VPC Diagram](./AWS%20Notes%20Screenshots/VPCDiagram.png)
 Diagram of a VPC
 
 **Network Access Control Lists**
@@ -916,7 +916,7 @@ AWS provides some services that can be used against DDos protection.
 	- Request flooding (login request flooding, API request flooding)
 
 
-[Encryption at Rest and In Transit](./AWS%20Notes%20Screenshots/EncryptionAtRestandInTransit.png)
+![Encryption at Rest and In Transit](./AWS%20Notes%20Screenshots/EncryptionAtRestandInTransit.png)
 Encryption of Data at Rest and Data at Transit
 
 #### AWS Key Management Service (KMS)
@@ -989,7 +989,7 @@ Encryption of Data at Rest and Data at Transit
 - Fully managed data security and data privacy service that uses **machine learning and pattern matching**.
 - For discovering and protecting sensitive data in AWS. (like personally identifiable information \[PII])
 
-[Macie AWS Example](./AWS%20Notes%20Screenshots/MacieAWSExample.png)
+![Macie AWS Example](./AWS%20Notes%20Screenshots/MacieAWSExample.png)
 Diagram of Macie with S3 and EventBridge
 
 #### AWS Security Hub
@@ -999,7 +999,7 @@ Diagram of Macie with S3 and EventBridge
 - Integrated dashboards showing current security and compliance status to quickly take action.
 
 
-[Amaozon Detective AWS](./AWS%20Notes%20Screenshots/AmazonDetectiveAWS.png)
+![Amaozon Detective AWS](./AWS%20Notes%20Screenshots/AmazonDetectiveAWS.png)
 Diagram of Security Hub Usage
 
 #### Amazon Detective
@@ -1038,7 +1038,7 @@ Diagram of Security Hub Usage
 - Helps define **zone of trust** i.e. what resources are being used by AWS Account or AWS organization and what resources are being used by outside of the AWS accounts.
 
 
-[Zone of Trust AWS](./AWS%20Notes%20Screenshots/ZoneOfTrustAWS.png)
+![Zone of Trust AWS](./AWS%20Notes%20Screenshots/ZoneOfTrustAWS.png)
 Zone of Trust Diagram
 
 ### Machine Learning Section
@@ -1109,7 +1109,7 @@ Zone of Trust Diagram
 A good multi account strategy to follow is to create accounts per department, per cost centre, per dev/test/production based on **regulatory restrictions** (SCP) for better resource isolation.
 
 
-[AWS Organizations](./AWS%20Notes%20Screenshots/AWSOrgnizations.png)
+![AWS Organizations](./AWS%20Notes%20Screenshots/AWSOrgnizations.png)
 Example of AWS Organization with Organizational Units (OU)
 
 ##### Service Control Policies (SCP)
@@ -1124,7 +1124,7 @@ Example of AWS Organization with Organizational Units (OU)
 - Example: restrict access to certain services.
   
 
-[SCP Based on IAM](./AWS%20Notes%20Screenshots/SCPBasedOnIAM.png)
+![SCP Based on IAM](./AWS%20Notes%20Screenshots/SCPBasedOnIAM.png)
 Example of a IAM policy that if applied to an OU will be called an SCP
 
 ##### Consolidated Billing
@@ -1149,7 +1149,7 @@ Example of a IAM policy that if applied to an OU will be called an SCP
 - Main goal is to help organizations standardize deployments and enforce governance while still empowering teams to deploy the resources they need.
   
 
-[Service Catalog Diagram](./AWS%20Notes%20Screenshots/ServiceCatalogDiagram.png)
+![Service Catalog Diagram](./AWS%20Notes%20Screenshots/ServiceCatalogDiagram.png)
 Service Catalog Diagram
 
 #### Pricing Models in AWS
@@ -1377,14 +1377,14 @@ AWS consists of 5 support plans.
 	- Identity federation: manage user identities in external systems, and provide them with STS tokens to access AWS resources.
 
 
-[STS AWS Example](./AWS%20Notes%20Screenshots/STSAWSExample.png)
+![STS AWS Example](./AWS%20Notes%20Screenshots/STSAWSExample.png)
 Diagram of STS Service Workings
 
 #### Amazon Cognito (Simplified)
 - Identity for your Web and Mobile application users. 
 - Instead of creating them an IAM user, you create a user in Cognito.
 
-[Amazon Cognito Example](./AWS%20Notes%20Screenshots/AmazonCognitoExample.png)
+![Amazon Cognito Example](./AWS%20Notes%20Screenshots/AmazonCognitoExample.png)
 Diagram of Amazon Cognito
 
 #### What is Microsoft Active Directory (AD)
@@ -1771,7 +1771,7 @@ AWS CAF has six perspectives
 - Security
 - Operations
 
-[AWS CAF Diagram](./AWS%20Notes%20Screenshots/AWSCAFDiagram.png)
+![AWS CAF Diagram](./AWS%20Notes%20Screenshots/AWSCAFDiagram.png)
 AWS CAF Diagram
 
 Business Perspective helps ensure that your cloud investments accelerate your digital transformation ambitions and business outcomes.

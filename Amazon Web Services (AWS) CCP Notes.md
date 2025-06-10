@@ -42,8 +42,10 @@
 	- **Edge Locations** are **data centres located in various cities worldwide** that serve as entry points to AWS’s network. 
 
 - AWS has both **Global services** (Route 53, IAM, Cloudfront) as well as **Regional Services** (Amazon EC2, Elastic Beanstalk, Lambda)
-### Shared Responsibility Diagram
-![[SharedResponsibilityModel.png]]
+
+[Shared Responsibility Model](./AWS%20Notes%20Screenshots/SharedResponsibilityModel.png)
+Shared Responsibility Model Diagram
+
 - **Customer**: Security IN the cloud.
 - **AWS**: Security OF the cloud.
 ---
@@ -190,11 +192,13 @@ ___
 | **Commitment**  | Instance type, size, AZ/region | Amount spending per hour across services |
 | **Flexibility** | Less Flexible                  | More Flexible                            |
 | **Scope**       | Regional or AZ                 | Flexible across EC2, Lambda, and Fargate |
+
 ##### EC2 Spot Instances
 - **Most cost-efficient** instances in AWS.
 - Instances that you can **lose** at any point if your max price is less than the current spot price.
 - Good for workloads **resilient to failure** (like Batch jobs, Image processing, data analysis, distributed workload, flexible workloads).
 - Bad for **critical** **jobs** or **databases**.
+  
 ##### EC2 Dedicated Hosts
 - Physical server with EC2 fully dedicated to your use.
 - Addresses **compliance requirements** and use existing **server-bound software licenses**.
@@ -203,16 +207,19 @@ ___
 	- **Reserved**: 1 or 3 years (**No upfront**, **Partial upfront**, **All upfront**)
 - **Most expensive option**.
 - Whenever you think about **licensing** or **regulatory or compliance**, or **detailed control** think Dedicated hosts.
+  
 ##### EC2 Dedicated Instances
 - Instances run on hardware that's dedicated to you.
 - Isolated at the hardware level. No sharing physical server with other customers. Physical Host can still be shared with other customers.
 - AWS controls placement.
-- Whenever you think **compliance requirements** **but simpler** than dedicated hosts. 
+- Whenever you think **compliance requirements** **but simpler** than dedicated hosts.
+  
 ##### EC2 Capacity Reservations
 - Reserve **on-demand** instances in specific AZ for any duration.
 - Always have access to EC2 when needed.
 - **No time commitment**, no discount.
 - Charged at On-demand rate.
+  
 #### Shared Responsibility Model for EC2
 
 | **AWS**                                  | **Customer**                                   |
@@ -221,22 +228,27 @@ ___
 | Isolation on physical hosts              | OS patches and updates                         |
 | Replacing faulty hardware                | Software installed on EC2                      |
 | Compliance Validation                    | IAM Access Management and Data security on EC2 |
+
 #### EC2 Instance Storage
+
 ##### Elastic Block Store (EBS) Volume
 - Network drive (not a physical drive, so has latency) attached to instances.
 - Mounted to only on instance at a time.
 - Bound (locked) to specific AZ.
 - Root EBS volume gets deleted on termination of EC2 instance by default (not other volumes).
+  
 ###### EBS Snapshots
 - Backup (Snapshot) of EBS volumes
 - Can be done at any point in time.
 - Snapshots can be copied and then restored in another AZ/Region.
 - **EBS Snapshot Archive Tier**: Cheaper than normal tier to archive snapshot. Takes 24 to 72 hours to restore archive.
 - **Recycle bin for EBS**: rules to delete EBS Snapshots so you can recover them after accidental deletion.
+  
 ##### EC2 Instance Store
 - High performance hardware disk (unlike EBS network drives).
 - Lose their storage if stopped.
 - Risk of data loss if hardware fails, better I/O performance.
+  
 ##### Elastic File System (EFS)
 - A managed Network File System (NFS) allows shared access to a file system across EC2 instances and services.
 - Can be mounted on **100s** of EC2 instances.
@@ -244,11 +256,13 @@ ___
 	- **EFS-IA (infrequent access)**: Storage class optimized for files not accessed everyday.
 		- Quite cheaper than EFS standard class.
 		- EFS automatically moves files to EFS-IA if **lifecycle policies** are enabled.
+    
 ##### Amazon Machine Image
 - Customization of EC2 Instance like software, configs, OS etc.
 - Faster boot/config time as all software is pre-packaged.
 - Built for specific **region**.
 - **AWS Marketplace AMI**: Selling and buying AMIs.
+  
 ###### EC2 Image Builder
 - Service automating the creation of Virtual Machines (VMs) or container images.
 - Automate creation, maintain, validate, test **EC2 AMIs**.
@@ -318,7 +332,6 @@ Diagram of EC2 Image Builder Service
 	- **Gateway Load Balancer** - Layer 3
 	- **Classic Load Balancer** - Layer 4 and 7
 	
-![[ElasticLoadBalancerDiagram.png|center| 600]]
 [Elastic Load Balancer Diagram](./AWS%20Notes%20Screenshots/ElasticLoadBalancerDiagram.png)
 Load Balancer
 
@@ -339,8 +352,6 @@ Load Balancer
 	- **Scheduled Scaling** anticipate scaling based on usage patterns
 	- **Predictive Scaling**: Uses Machine Learning to predict future traffic ahead of time.
 
-
-![[AutoScalingGroupExample.png| center | 600]]
 [Auto Scaling Group with Load Balancer Diagram](./AWS%20Notes%20Screenshots/ElasticLoadBalancerDiagram.png)
 ASG with Load Balancer Diagram
 
@@ -466,7 +477,6 @@ ___
 - Read Replicas for improved read performance
 - **Cannot** SSH into instances
 
-![[ASGwithAmazonRDS.png| center | 600]]
 [ASG with Amazon RDS](./AWS%20Notes%20Screenshots/ASGwithAmazonRDS.png)
 Usage of Amazon RDS with ELB and EC2 Instances
 
@@ -492,7 +502,7 @@ Usage of Amazon RDS with ELB and EC2 Instances
 - Helps reduce load off database for read intensive workloads.
 - AWS takes care of OS maintenance/patching, optimizations, setup, config.
 
-![[ElastiCacheArchitectureExample.png| center | 600]]
+
 [Elasti Cache Architecture Example](./AWS%20Notes%20Screenshots/ElastiCacheArchitectureExample.png)
 ElastiCache Architecture
 
@@ -650,7 +660,7 @@ ElastiCache Architecture
 - Basis for CI/CD.
 - Serverless.
 
-![[ExampleOfCodePipelineUsage.png| center | 600]]
+
 [Example of Code Pipline Usage](./AWS%20Notes%20Screenshots/ExampleOfCodePipelineUsage.png)
 CodePipeline Usage
 
@@ -834,7 +844,7 @@ Diagram of a VPC
   
 #### VPC Endpoints
 - Allow secure connectivity between VPC and AWS services
-- Uses a private network instead of the public www.
+- Uses a private network instead of the public `www`.
   
 #### AWS PrivateLink (Type of VPC Endpoint)
 - Most secure and scalable way to expose a service to VPCs.
